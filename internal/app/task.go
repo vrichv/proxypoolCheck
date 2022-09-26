@@ -2,18 +2,19 @@ package app
 
 import (
 	"fmt"
-	"github.com/Sansui233/proxypool/pkg/healthcheck"
-	"github.com/Sansui233/proxypool/pkg/provider"
-	"github.com/Sansui233/proxypoolCheck/config"
-	"github.com/Sansui233/proxypoolCheck/internal/cache"
 	"log"
 	"time"
+
+	"github.com/vrichv/proxypoolCheck/config"
+	"github.com/vrichv/proxypoolCheck/internal/cache"
+	"github.com/vrichv/proxypoolCheck/pkg/healthcheck"
+	"github.com/vrichv/proxypoolCheck/pkg/provider"
 )
 
 var location, _ = time.LoadLocation("PRC")
 
 // Get all usable proxies from proxypool server and set app vars
-func InitApp() error{
+func InitApp() error {
 	// Get proxies from server
 	proxies, err := getAllProxies()
 	if err != nil {
@@ -65,4 +66,3 @@ func InitApp() error{
 	fmt.Println("Open", config.Config.Domain+":"+config.Config.Port, "to check.")
 	return nil
 }
-

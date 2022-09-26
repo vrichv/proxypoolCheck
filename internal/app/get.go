@@ -4,13 +4,14 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"errors"
-	"github.com/Sansui233/proxypool/pkg/proxy"
-	"github.com/Sansui233/proxypoolCheck/config"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/vrichv/proxypoolCheck/config"
+	"github.com/vrichv/proxypoolCheck/pkg/proxy"
 )
 
 func getAllProxies() (proxy.ProxyList, error) {
@@ -86,7 +87,7 @@ func getProxies(url string) ([]string, error) {
 	}
 
 	client := &http.Client{
-		Timeout: 5 * time.Second,
+		Timeout:   5 * time.Second,
 		Transport: tr,
 	}
 	resp, err := client.Get(url)

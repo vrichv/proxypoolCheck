@@ -8,13 +8,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Sansui233/proxypool/pkg/provider"
-	"github.com/Sansui233/proxypoolCheck/config"
-	"github.com/Sansui233/proxypoolCheck/internal/app"
-	appcache "github.com/Sansui233/proxypoolCheck/internal/cache"
 	"github.com/gin-contrib/cache"
 	"github.com/gin-contrib/cache/persistence"
 	"github.com/gin-gonic/gin"
+	"github.com/vrichv/proxypoolCheck/config"
+	"github.com/vrichv/proxypoolCheck/internal/app"
+	appcache "github.com/vrichv/proxypoolCheck/internal/cache"
+	"github.com/vrichv/proxypoolCheck/pkg/provider"
 )
 
 const version = "v0.7.3"

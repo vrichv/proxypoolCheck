@@ -2,17 +2,17 @@ package main
 
 import (
 	"flag"
-	"github.com/Sansui233/proxypoolCheck/api"
-	"github.com/Sansui233/proxypoolCheck/config"
-	"github.com/Sansui233/proxypoolCheck/internal/app"
-	"github.com/Sansui233/proxypoolCheck/internal/cron"
+	"github.com/vrichv/proxypoolCheck/api"
+	"github.com/vrichv/proxypoolCheck/config"
+	"github.com/vrichv/proxypoolCheck/internal/app"
+	"github.com/vrichv/proxypoolCheck/internal/cron"
 	"log"
 	"net/http"
 )
 
 var configFilePath = ""
 
-func main()  {
+func main() {
 	go func() {
 		http.ListenAndServe("0.0.0.0:6061", nil)
 	}()
@@ -36,6 +36,5 @@ func main()  {
 	go cron.Cron()
 	// Run
 	api.Run()
-
 
 }

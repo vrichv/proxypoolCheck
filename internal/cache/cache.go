@@ -1,9 +1,10 @@
 package cache
 
 import (
-	"github.com/Sansui233/proxypool/pkg/proxy"
-	"github.com/patrickmn/go-cache"
 	"time"
+
+	"github.com/patrickmn/go-cache"
+	"github.com/vrichv/proxypoolCheck/pkg/proxy"
 )
 
 var Cache = cache.New(cache.NoExpiration, 10*time.Minute)
