@@ -1,19 +1,23 @@
 # Proxypool 健康检查
 
 ## 导航
+- [版本新特性](#版本新特性)
 - [简介](#简介)
 - [安装和运行](#安装和运行)
 - [配置](#配置)
 - [添加自启](#添加自启)
-- [声明](#声明)
+- 
 
+## 版本新特性
+此版本基于[proxypool v0.7.3](https://github.com/sansui233/proxypool)和[proxypoolCheck 0.3.1](https://github.com/sansui233/proxypoolCheck)基础上增加和修改。
+- 增加支持V2rayN的订阅链接 /sub ,支持筛选
 ## 简介
 
-此项目为[proxypool](https://github.com/vrichv/proxypool)的代理池节点可用性检测部分，并提供检测后可用的代理。
+此项目为[proxypool](https://github.com/sansui233/proxypool)的代理池节点可用性检测部分，并提供检测后可用的代理。
 
 此项目推荐在本地（即您家里）部署，或是的中国大陆服务器上运行，以提升代理池节点的实际可用比例。
 
-在使用此项目之前，您应该有一个（或知道一个）可用的[proxypool](https://github.com/vrichv/proxypool)服务器。
+在使用此项目之前，您应该有一个（或知道一个）可用的[proxypool](https://github.com/sansui233/proxypool)服务器。
 
 
 ## 安装和运行

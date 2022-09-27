@@ -1,10 +1,12 @@
 # Proxypool Health Check
 ## [中文教程](README_zh_CN.md)
 
+## NEW FEATURE
+- Support V2rayN subscription(/sub), support filtering data.
 ## Info
 
 This is proxy health check and provider part of proxypool. You should have had a
-[proxypool](https://github.com/vrichv/proxypool) server available at first.
+[proxypool](https://github.com/sansui233/proxypool) server available at first.
 
 Due to the poor availability of proceeding proxy health check on servers overseas, The best usage of this project is to run on your own server within Mainland China.
 

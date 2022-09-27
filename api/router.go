@@ -17,7 +17,7 @@ import (
 	"github.com/vrichv/proxypoolCheck/pkg/provider"
 )
 
-const version = "v0.7.3"
+const version = "v0.3.2"
 
 var router *gin.Engine
 
@@ -127,7 +127,7 @@ func setupRouter() {
 		}
 		c.String(200, text)
 	})
-	router.GET("/sub", func(c *gin.Context) {
+	router.GET("/sub", func(c *gin.Context) { //support v2rayN subscription
 		proxyTypes := c.DefaultQuery("type", "")
 		proxyCountry := c.DefaultQuery("c", "")
 		proxyNotCountry := c.DefaultQuery("nc", "")

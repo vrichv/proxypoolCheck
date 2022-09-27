@@ -48,20 +48,25 @@ func InitApp() error {
 	cache.SetProxies("proxies", proxies)
 	cache.UsableProxiesCount = len(proxies)
 
-	if config.Config.SpeedTest == true {
+	if config.Config.SpeedTest {
 		healthcheck.SpeedTestAll(proxies)
 	}
 
 	cache.SetString("clashproxies", provider.Clash{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &proxies,
 		},
 	}.Provide())
 	cache.SetString("surgeproxies", provider.Surge{
-		provider.Base{
+		Base: provider.Base{
 			Proxies: &proxies,
 		},
 	}.Provide())
+	cache.SetString("subproxies", provider.Clash{
+		Base: provider.Base{
+			Proxies: &proxies,
+		},
+	}.Sub())
 
 	fmt.Println("Open", config.Config.Domain+":"+config.Config.Port, "to check.")
 	return nil
