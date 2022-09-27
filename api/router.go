@@ -101,7 +101,7 @@ func setupRouter() {
 		} else if proxyTypes == "all" {
 			proxies := appcache.GetProxies("allproxies")
 			clash := provider.Clash{
-				provider.Base{
+				Base: provider.Base{
 					Proxies:    &proxies,
 					Types:      proxyTypes,
 					Country:    proxyCountry,
@@ -114,7 +114,7 @@ func setupRouter() {
 		} else {
 			proxies := appcache.GetProxies("proxies")
 			clash := provider.Clash{
-				provider.Base{
+				Base: provider.Base{
 					Proxies:    &proxies,
 					Types:      proxyTypes,
 					Country:    proxyCountry,
@@ -124,6 +124,54 @@ func setupRouter() {
 				},
 			}
 			text = clash.Provide() // 根据Query筛选节点
+		}
+		c.String(200, text)
+	})
+	router.GET("/sub", func(c *gin.Context) {
+		proxyTypes := c.DefaultQuery("type", "")
+		proxyCountry := c.DefaultQuery("c", "")
+		proxyNotCountry := c.DefaultQuery("nc", "")
+		proxySpeed := c.DefaultQuery("speed", "")
+		proxyFilter := c.DefaultQuery("filter", "")
+		text := ""
+		if proxyTypes == "" && proxyCountry == "" && proxyNotCountry == "" && proxySpeed == "" && proxyFilter == "" {
+			text = appcache.GetString("subproxies") // A string. To show speed in this if condition, this must be updated after speedtest
+			if text == "" {
+				proxies := appcache.GetProxies("proxies")
+				clash := provider.Clash{
+					Base: provider.Base{
+						Proxies: &proxies,
+					},
+				}
+				text = clash.Sub() // 根据Query筛选节点
+				appcache.SetString("subproxies", text)
+			}
+		} else if proxyTypes == "all" {
+			proxies := appcache.GetProxies("allproxies")
+			clash := provider.Clash{
+				Base: provider.Base{
+					Proxies:    &proxies,
+					Types:      proxyTypes,
+					Country:    proxyCountry,
+					NotCountry: proxyNotCountry,
+					Speed:      proxySpeed,
+					Filter:     proxyFilter,
+				},
+			}
+			text = clash.Sub() // 根据Query筛选节点
+		} else {
+			proxies := appcache.GetProxies("proxies")
+			clash := provider.Clash{
+				Base: provider.Base{
+					Proxies:    &proxies,
+					Types:      proxyTypes,
+					Country:    proxyCountry,
+					NotCountry: proxyNotCountry,
+					Speed:      proxySpeed,
+					Filter:     proxyFilter,
+				},
+			}
+			text = clash.Sub() // 根据Query筛选节点
 		}
 		c.String(200, text)
 	})

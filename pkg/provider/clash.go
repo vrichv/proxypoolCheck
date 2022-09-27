@@ -41,6 +41,20 @@ func (c Clash) Provide() string {
 	return resultBuilder.String()
 }
 
+// subscription
+func (c Clash) Sub() string {
+	c.preFilter()
+
+	var resultBuilder strings.Builder
+
+	for _, p := range *c.Proxies {
+		if checkClashSupport(p) {
+			resultBuilder.WriteString(p.Link() + "\n")
+		}
+	}
+	return tool.Base64EncodeString(resultBuilder.String(), true)
+}
+
 // 检查单个节点的加密方式、协议类型与混淆是否是Clash所支持的
 func checkClashSupport(p proxy.Proxy) bool {
 	switch p.TypeName() {
